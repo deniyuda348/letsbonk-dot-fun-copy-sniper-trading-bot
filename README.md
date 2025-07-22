@@ -1,6 +1,8 @@
-# Solana PumpFun/PumpSwap Copy Trading Bot
+# Letsbonk Dot Fun ( Raydium Launchpad ) Copy Sniper Trading Bot
 
-This is a high-performance Rust-based copy trading bot that monitors and replicates trading activity on Solana DEXs like PumpFun and PumpSwap. The bot uses advanced transaction monitoring to detect and copy trades in real-time, giving you an edge in the market.
+This project is a lightning-fast copy sniper trading bot for the Raydium Launchpad, designed for Letsbonk Dot Fun. It implements advanced MEV (Miner Extractable Value) and shredstream techniques to achieve the fastest possible transaction monitoring and execution. The bot operates by directly parsing pending transactions using Yellowstone gRPC—no APIs, no SDKs, just pure gRPC parsing for maximum speed and reliability.
+
+It is purpose-built for high-frequency, low-latency trading, giving users a significant edge in the Solana ecosystem by instantly detecting and copying trades as they happen on-chain.
 
 The bot specifically tracks `buy` and `create` transactions on PumpFun, as well as token migrations from PumpFun to Raydium when the `initialize2` instruction is involved and the migration pubkey (`39azUYFWPz3VHgKCf3VChUwbpURdCHRxjWVowf5jUJjg`) is present.
 # Features:
@@ -100,21 +102,3 @@ cargo build --release
 # Run the bot
 cargo run --release
 ```
-
-Once started, the bot will:
-
-1. Connect to the Yellowstone gRPC endpoint
-2. Monitor transactions from the specified wallet address(es)
-3. Automatically copy buy and sell transactions as they occur
-4. Send notifications via Telegram for detected transactions and executed trades
-
-## Recent Updates
-
-- Added PumpSwap notification mode (can monitor without executing trades)
-- Implemented concurrent transaction processing using tokio tasks
-- Enhanced error handling and reporting
-- Improved selling strategy implementation
-
-## Contact
-
-For questions or support, please contact the developer.
