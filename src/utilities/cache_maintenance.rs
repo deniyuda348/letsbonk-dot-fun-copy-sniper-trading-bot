@@ -2,8 +2,8 @@ use std::time::Duration;
 use tokio::time;
 use colored::Colorize;
 
-use crate::common::logger::Logger;
-use crate::common::cache::{TOKEN_ACCOUNT_CACHE, TOKEN_MINT_CACHE, POOL_CACHE};
+use crate::library::logger::Logger;
+use crate::library::cache::{TOKEN_ACCOUNT_CACHE, TOKEN_MINT_CACHE, POOL_CACHE};
 
 /// CacheMaintenanceService handles periodic cleanup of expired cache entries
 pub struct CacheMaintenanceService {

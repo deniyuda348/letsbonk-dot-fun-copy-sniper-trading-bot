@@ -9,7 +9,7 @@ use tokio::sync::{Mutex, OnceCell};
 use std::{env, sync::Arc};
 use crate::engine::swap::SwapProtocol;
 use crate::{
-    common::{constants::INIT_MSG, logger::Logger},
+    library::{constants::INIT_MSG, logger::Logger},
     engine::swap::{SwapDirection, SwapInType},
 };
 
@@ -192,8 +192,6 @@ pub const RAYDIUM_LAUNCHPAD_SELL_LOG_INSTRUCTION: &str = "Sell";
 pub const JUPITER_PROGRAM: &str = "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4";
 pub const OKX_DEX_PROGRAM: &str = "6m2CDdhRgxpH4WjvdzxAYbGxwdGUz5MziiL5jek2kBma";
 // pub const PUMP_FUN_MINT_PROGRAM_DATA_PREFIX: &str = "Program data: G3KpTd7rY3Y";
-pub const HELIUS_PROXY: &str =
-    "6gUbcJtcgqa85Q7SmzT8t3pkb4LhsjxpqjLDkUgW7ABbJXHaZyiH9PttsYFEqDJJjbrX7A";
 
 use std::cmp::Eq;
 use std::hash::{Hash, Hasher};

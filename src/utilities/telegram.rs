@@ -5,7 +5,7 @@ use anyhow::{Result, anyhow};
 use colored::Colorize;
 use teloxide::prelude::*;
 use teloxide::types::{ParseMode};
-use crate::common::logger::Logger;
+use crate::library::logger::Logger;
 use crate::engine::transaction_parser::TradeInfoFromToken;
 use dashmap::DashMap;
 

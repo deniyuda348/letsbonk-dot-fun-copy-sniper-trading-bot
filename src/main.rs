@@ -10,15 +10,15 @@
  */
 use anchor_client::solana_sdk::signature::Signer;
 use solana_vntr_sniper::{
-    common::{config::Config, constants::RUN_MSG, cache::WALLET_TOKEN_ACCOUNTS},
+    library::{config::Config, constants::RUN_MSG, cache::WALLET_TOKEN_ACCOUNTS},
     engine::{
         copy_trading::{start_copy_trading, CopyTradingConfig},
         swap::SwapProtocol,
     },
-    services::{telegram, cache_maintenance, blockhash_processor::BlockhashProcessor},
-    core::token,
+    utilities::{telegram, cache_maintenance, blockhash_processor::BlockhashProcessor},
+    tx_processor::token,
 };
-use solana_vntr_sniper::common::config::{JUPITER_PROGRAM, OKX_DEX_PROGRAM};
+use solana_vntr_sniper::library::config::{JUPITER_PROGRAM, OKX_DEX_PROGRAM};
 use solana_program_pack::Pack;
 use anchor_client::solana_sdk::pubkey::Pubkey;
 use anchor_client::solana_sdk::transaction::Transaction;
@@ -31,7 +31,7 @@ use spl_associated_token_account::get_associated_token_address;
 
 /// Initialize the wallet token account list by fetching all token accounts owned by the wallet
 async fn initialize_token_account_list(config: &Config) {
-    let logger = solana_vntr_sniper::common::logger::Logger::new("[INIT-TOKEN-ACCOUNTS] => ".green().to_string());
+    let logger = solana_vntr_sniper::library::logger::Logger::new("[INIT-TOKEN-ACCOUNTS] => ".green().to_string());
     
     if let Ok(wallet_pubkey) = config.app_state.wallet.try_pubkey() {
         logger.log(format!("Initializing token account list for wallet: {}", wallet_pubkey));
@@ -67,7 +67,7 @@ async fn initialize_token_account_list(config: &Config) {
 
 /// Wrap SOL to Wrapped SOL (WSOL)
 async fn wrap_sol(config: &Config, amount: f64) -> Result<(), String> {
-    let logger = solana_vntr_sniper::common::logger::Logger::new("[WRAP-SOL] => ".green().to_string());
+    let logger = solana_vntr_sniper::library::logger::Logger::new("[WRAP-SOL] => ".green().to_string());
     
     // Get wallet pubkey
     let wallet_pubkey = match config.app_state.wallet.try_pubkey() {
@@ -128,7 +128,7 @@ async fn wrap_sol(config: &Config, amount: f64) -> Result<(), String> {
 
 /// Unwrap SOL from Wrapped SOL (WSOL) account
 async fn unwrap_sol(config: &Config) -> Result<(), String> {
-    let logger = solana_vntr_sniper::common::logger::Logger::new("[UNWRAP-SOL] => ".green().to_string());
+    let logger = solana_vntr_sniper::library::logger::Logger::new("[UNWRAP-SOL] => ".green().to_string());
     
     // Get wallet pubkey
     let wallet_pubkey = match config.app_state.wallet.try_pubkey() {
@@ -187,7 +187,7 @@ async fn unwrap_sol(config: &Config) -> Result<(), String> {
 
 /// Close all token accounts owned by the wallet
 async fn close_all_token_accounts(config: &Config) -> Result<(), String> {
-    let logger = solana_vntr_sniper::common::logger::Logger::new("[CLOSE-TOKEN-ACCOUNTS] => ".green().to_string());
+    let logger = solana_vntr_sniper::library::logger::Logger::new("[CLOSE-TOKEN-ACCOUNTS] => ".green().to_string());
     
     // Get wallet pubkey
     let wallet_pubkey = match config.app_state.wallet.try_pubkey() {
@@ -282,7 +282,7 @@ async fn close_all_token_accounts(config: &Config) -> Result<(), String> {
 
 /// Initialize target wallet token list by fetching all token accounts owned by the target wallet
 async fn initialize_target_wallet_token_list(config: &Config, target_addresses: &[String]) -> Result<(), String> {
-    let logger = solana_vntr_sniper::common::logger::Logger::new("[INIT-TARGET-TOKENS] => ".green().to_string());
+    let logger = solana_vntr_sniper::library::logger::Logger::new("[INIT-TARGET-TOKENS] => ".green().to_string());
     
     // Check if we should initialize
     let should_check = std::env::var("IS_CHECK_TARGET_WALLET_TOKEN_ACCOUNT")
@@ -320,7 +320,7 @@ async fn initialize_target_wallet_token_list(config: &Config, target_addresses: 
                 for account in accounts {
                     if let Ok(token_account) = config.app_state.rpc_client.get_account(&Pubkey::from_str(&account.pubkey).unwrap()) {
                         if let Ok(parsed) = spl_token::state::Account::unpack(&token_account.data) {
-                            solana_vntr_sniper::common::cache::TARGET_WALLET_TOKENS.insert(parsed.mint.to_string());
+                            solana_vntr_sniper::library::cache::TARGET_WALLET_TOKENS.insert(parsed.mint.to_string());
                             logger.log(format!("Added token mint {} to target wallet list", parsed.mint));
                         }
                     }
@@ -334,7 +334,7 @@ async fn initialize_target_wallet_token_list(config: &Config, target_addresses: 
     
     logger.log(format!(
         "Target wallet token list initialized with {} tokens",
-        solana_vntr_sniper::common::cache::TARGET_WALLET_TOKENS.size()
+        solana_vntr_sniper::library::cache::TARGET_WALLET_TOKENS.size()
     ));
     
     Ok(())

@@ -12,7 +12,7 @@ use std::sync::Arc;
 use anyhow::{Result, anyhow};
 use spl_associated_token_account::instruction::create_associated_token_account_idempotent;
 
-use crate::common::cache::{TOKEN_ACCOUNT_CACHE, TOKEN_MINT_CACHE};
+use crate::library::cache::{TOKEN_ACCOUNT_CACHE, TOKEN_MINT_CACHE};
 
 pub fn get_token_address(
     client: Arc<anchor_client::solana_client::nonblocking::rpc_client::RpcClient>,

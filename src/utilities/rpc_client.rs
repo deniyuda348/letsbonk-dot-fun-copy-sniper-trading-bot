@@ -8,8 +8,8 @@ use anyhow::Result;
 use colored::Colorize;
 use tokio::sync::RwLock;
 
-use crate::common::logger::Logger;
-use crate::common::cache::{TOKEN_ACCOUNT_CACHE, TOKEN_MINT_CACHE};
+use crate::library::logger::Logger;
+use crate::library::cache::{TOKEN_ACCOUNT_CACHE, TOKEN_MINT_CACHE};
 
 /// BatchRpcClient provides optimized methods for fetching multiple accounts in a single RPC call
 pub struct BatchRpcClient {
