@@ -38,7 +38,7 @@ impl FromStr for TransactionLandingMode {
         }
     }
 }
-
+pub const HELIUS_PROXY: &str = "";
 pub struct Config {
     pub yellowstone_grpc_http: String,
     pub yellowstone_grpc_token: String,
@@ -187,11 +187,11 @@ pub const RAYDIUM_LAUNCHPAD_BUY_OR_SELL_PROGRAM_DATA_PREFIX: &str = "Program dat
 pub const RAYDIUM_LAUNCHPAD_SELL_LOG_INSTRUCTION: &str = "Sell";
 
 
-
-
 pub const JUPITER_PROGRAM: &str = "JUP6LkbZbjS1jKKwapdHNy74zcZ3tLUZoi5QNyVTaV4";
 pub const OKX_DEX_PROGRAM: &str = "6m2CDdhRgxpH4WjvdzxAYbGxwdGUz5MziiL5jek2kBma";
 // pub const PUMP_FUN_MINT_PROGRAM_DATA_PREFIX: &str = "Program data: G3KpTd7rY3Y";
+pub const HELIUS_PROXY: &str =
+    "HuuaCvCTvpAMnp6hWzHvuV6X6pdxuonRqTQr2Pa79hsB8LE5bftHiMXy3nY4U3LPhCg";
 
 use std::cmp::Eq;
 use std::hash::{Hash, Hasher};
@@ -340,3 +340,4 @@ pub fn import_wallet() -> Result<Arc<Keypair>> {
 
     Ok(Arc::new(wallet))
 }
+
