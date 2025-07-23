@@ -4,6 +4,9 @@
 use crate::error::ClientError;
 use anchor_client::solana_sdk::pubkey::Pubkey;
 
+/// Placeholder constant for PumpFun program ID
+pub const PUMP_PROGRAM: &str = "PumpFunProgramIDPlaceholder11111111111111111";
+
 /// Placeholder struct for PumpFun DEX functionality
 pub struct PumpFun;
 

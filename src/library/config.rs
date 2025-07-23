@@ -38,7 +38,6 @@ impl FromStr for TransactionLandingMode {
         }
     }
 }
-pub const HELIUS_PROXY: &str = "";
 pub struct Config {
     pub yellowstone_grpc_http: String,
     pub yellowstone_grpc_token: String,

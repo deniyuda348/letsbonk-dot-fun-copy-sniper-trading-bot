@@ -65,5 +65,5 @@ impl BoughtTokenInfo {
     }
 }
 
-/// Comprehensive s
-/// 
+// Placeholder: Comprehensive selling functionality was removed for public purposes
+// Add actual comprehensive selling logic here when needed

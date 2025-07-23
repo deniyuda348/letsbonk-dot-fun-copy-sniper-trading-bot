@@ -4,3 +4,4 @@ pub mod dex;
 pub mod engine;
 pub mod error;
 pub mod utilities;
+pub mod services;
