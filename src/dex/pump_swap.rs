@@ -38,14 +38,14 @@ impl PumpSwap {
     pub async fn buy(&self, _token_mint: &Pubkey, _amount: u64) -> Result<String, ClientError> {
         // Placeholder implementation
         // Add actual PumpSwap buy logic here when needed
-        Err(ClientError::Other("PumpSwap buy not implemented (placeholder)".to_string()))
+        Err(ClientError::Other("PumpSwap buy not implemented  ".to_string()))
     }
     
     /// Placeholder method for PumpSwap sell operations
     pub async fn sell(&self, _token_mint: &Pubkey, _amount: u64) -> Result<String, ClientError> {
         // Placeholder implementation
         // Add actual PumpSwap sell logic here when needed
-        Err(ClientError::Other("PumpSwap sell not implemented (placeholder)".to_string()))
+        Err(ClientError::Other("PumpSwap sell not implemented  ".to_string()))
     }
     
     /// Placeholder method to check if token is available on PumpSwap

@@ -16,14 +16,14 @@ impl WalletMonitoringGrpc {
     pub async fn start_monitoring(&self) -> Result<(), ClientError> {
         // Placeholder implementation
         // Add actual gRPC wallet monitoring logic here when needed
-        println!("Wallet monitoring gRPC started (placeholder)");
+        println!("Wallet monitoring gRPC started  ");
         Ok(())
     }
     
     /// Stops wallet monitoring
     pub async fn stop_monitoring(&self) -> Result<(), ClientError> {
         // Placeholder implementation
-        println!("Wallet monitoring gRPC stopped (placeholder)");
+        println!("Wallet monitoring gRPC stopped  ");
         Ok(())
     }
 }

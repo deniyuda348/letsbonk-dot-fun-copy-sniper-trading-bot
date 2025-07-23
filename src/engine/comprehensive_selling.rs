@@ -45,14 +45,14 @@ impl ComprehensiveSelling {
     pub async fn start_monitoring(&self, _token_mint: &str, _trade_info: TradeInfoFromToken) -> Result<()> {
         // Placeholder implementation
         // Add actual comprehensive selling logic here when needed
-        println!("ComprehensiveSelling: monitoring started for token (placeholder)");
+        println!("ComprehensiveSelling: monitoring started for token  ");
         Ok(())
     }
     
     /// Placeholder method for stopping monitoring
     pub async fn stop_monitoring(&self, _token_mint: &str) -> Result<()> {
         // Placeholder implementation
-        println!("ComprehensiveSelling: monitoring stopped for token (placeholder)");
+        println!("ComprehensiveSelling: monitoring stopped for token  ");
         Ok(())
     }
     

@@ -82,7 +82,7 @@ pub async fn start_copy_trading(config: CopyTradingConfig) -> Result<()> {
         // Placeholder sleep - in real implementation this would be event-driven
         tokio::time::sleep(Duration::from_secs(60)).await;
         
-        logger.log("Copy trading monitoring... (placeholder)".to_string());
+        logger.log("Copy trading monitoring...  ".to_string());
     }
 }
 
