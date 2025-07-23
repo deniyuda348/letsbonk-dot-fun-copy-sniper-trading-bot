@@ -294,8 +294,8 @@ pub async fn create_nozomi_nonblocking_rpc_client(
 
 pub async fn create_zeroslot_rpc_client() -> Result<Arc<crate::services::zeroslot::ZeroSlotClient>> {
     let client = crate::services::zeroslot::ZeroSlotClient::new(
-        crate::services::zeroslot::ZERO_SLOT_URL.as_str()
-    );
+        crate::services::zeroslot::ZERO_SLOT_URL
+    )?;
     Ok(Arc::new(client))
 }
 
