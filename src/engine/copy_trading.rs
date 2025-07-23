@@ -60,7 +60,6 @@ pub struct CopyTradingConfig {
 pub async fn start_copy_trading(config: CopyTradingConfig) -> Result<()> {
     let logger = Logger::new("[COPY-TRADING] => ".green().to_string());
     
-    logger.log("Copy trading started (placeholder implementation)".to_string());
     logger.log(format!("Monitoring {} target addresses", config.target_addresses.len()));
     logger.log(format!("Protocol preference: {:?}", config.protocol_preference));
     logger.log(format!("Buy amount: {} SOL", config.buy_in_sell));
