@@ -28,6 +28,7 @@ use colored::Colorize;
 use spl_token::instruction::sync_native;
 use spl_token::ui_amount_to_amount;
 use spl_associated_token_account::get_associated_token_address;
+use std::sync::Arc;
 
 /// Initialize the wallet token account list by fetching all token accounts owned by the wallet
 async fn initialize_token_account_list(config: &Config) {
@@ -505,8 +506,8 @@ async fn main() {
     let copy_trading_config = CopyTradingConfig {
         yellowstone_grpc_http: config.yellowstone_grpc_http.clone(),
         yellowstone_grpc_token: config.yellowstone_grpc_token.clone(),
-        app_state: config.app_state.clone(),
-        swap_config: config.swap_config.clone(),
+        app_state: Arc::new(config.app_state.clone()),
+        swap_config: Arc::new(config.swap_config.clone()),
         counter_limit: config.counter_limit as u64,
         target_addresses,
         excluded_addresses: vec![JUPITER_PROGRAM.to_string(), OKX_DEX_PROGRAM.to_string()],

@@ -20,7 +20,7 @@ impl BlockhashProcessor {
     pub async fn start(&self) -> Result<(), ClientError> {
         // Placeholder implementation
         // Add actual blockhash processing logic here when needed
-        println!("BlockhashProcessor started (placeholder)");
+        println!("BlockhashProcessor started  ");
         Ok(())
     }
     
